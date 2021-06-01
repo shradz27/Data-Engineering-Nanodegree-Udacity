@@ -30,6 +30,10 @@ Coursework for Udacity's Data Engineering NanoDegree
 - Create a Data Engineering portfolio project. Scope, gather and define data. Explore and assess the data, define it and run ETL to model the data. 
 
     [Project: Udacity Data Engineering Capstone](https://github.com/shradz27/Data-Engineering-Nanodegree-Udacity/tree/main/DEND%20Capstone%20Project)
+    
+    
+
+*Certificate from the program - [verification link](https://confirm.udacity.com/ZGJLGPE7)
 
 ![certificate](https://github.com/shradz27/Data-Engineering-Nanodegree-Udacity/blob/main/udacityCertificate.jpg)
 
