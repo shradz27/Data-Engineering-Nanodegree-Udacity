@@ -57,3 +57,65 @@ The data has to go thropugh quality checks are performed to ensure the pipeline 
  * Integrity constraints on the relational database (e.g., unique key, data type, etc.)
  * Unit tests for the scripts to ensure they are doing the right thing
  * Source/Count checks to ensure completeness
+
+ 
+ Brief description of data files with column names and their description, alng with an ER diagram
+
+![Database schema](CapstoneErDiagram.png)
+##### Fact Table
+
+    immigration_df
+        id: id
+        state_code: state code of arrival city
+        city_code: city port code of arrival city
+        date: date of arrival
+        count: count of immigrant's entries into the US
+
+##### Dimensional Tables
+   
+    immigrant_df
+        id: id of immigrant
+        gender: gender of immigrant
+        age: age of immigrant
+        visa_type: immigrant's visa type
+
+    city_stat_df
+        city_code: city port code
+        state_code: state code of the city
+        city_name: name of the city
+        median_age: median age of the city
+        pct_male_pop: percentage of male population
+        pct_female_pop: percentage of population in percentage
+        pct_veterans: percentage of veteran population in percentage
+        pct_foreign_born: percentage of foreign born population
+        pct_native_american: percentage of native american population
+        pct_asian: percentage of asian population
+        pct_black: percentage of black population
+        pct_hispanic_or_latino: percentage of hispanic population
+        pct_white: percentage of white population
+        total_pop: city's total population
+        lat: latitude of the city
+        long: longitude of the city
+
+    monthly_city_temp_df
+        city_code: city port code
+        year: 
+        month: month 
+        avg_temperature: average temperature of city for given month
+        
+### Some interesting facts
+
+* The rationale for choosing Apache Spark:
+     - ability to handle multiple file formats with large datasets
+     - unified analytics engine for big data
+     - easy processing of large input files into dataframes
+     - easy manipulation of data 
+
+
+* The decision for how often the data should be updated must be based on factors such as how often new data will be available, and what kind of analytics will be performed. For these datasets, a monthly update cycle might be optimal.
+
+* If the data was increased by 100x volume, the data would be stored in something like Amazon S3 bucket and loaded onto the staging tables. Spark would still be used as the data processing framework as it is able to handle very large datadets. 
+
+* If the data populates a dashboard that must be updated on a daily basis by 7am every day, a workflow management platform would have to be used such as Apache Airflow, where data pipelines could be built, scheduled and automated. Data quality checks can also be scheduled. 
+
+* If the database needed to be accessed by 100+ people, the analytics database would have to be moved to a proudction scale warehouse on the cloud such as Amazon Redshift that would allow efficient access of the database by many people. It also has auto-scaling capabilities and great read performance.
